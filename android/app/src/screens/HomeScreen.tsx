@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, Button } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
-// Define your navigation param list
+
 type RootStackParamList = {
   Details: { count: number };
 };
