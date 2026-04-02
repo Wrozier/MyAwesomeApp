@@ -16,7 +16,7 @@ const DetailsScreen = (props: any) => {
   const [count, setCount] = useState<number>(10);
   const [value, setValue] = useState<string>('1');
 
-  // ✅ Memoized data (prevents new array reference on every render)
+  
   const consultants = useMemo(
     () => ['Alice', 'Bob', 'Charlie', 'David'],
     []
@@ -32,7 +32,7 @@ const DetailsScreen = (props: any) => {
 
   const { firstName, LastName } = props.route.params;
 
-  // ✅ Memoized renderItem (important for FlatList performance)
+ 
   const renderItem = useCallback(({ item }: { item: string }) => {
     return (
       <Text style={{ fontWeight: 'bold', fontSize: 14 }}>
@@ -41,7 +41,7 @@ const DetailsScreen = (props: any) => {
     );
   }, []);
 
-  // ❌ NOT memoized (explained below)
+
   const keyExtractor = (item: string, index: number) => index.toString();
 
   return (
@@ -51,7 +51,7 @@ const DetailsScreen = (props: any) => {
       <Text style={styles.text}>FirstName: {firstName}</Text>
       <Text style={styles.text}>LastName: {LastName}</Text>
 
-      {/* ❌ map NOT memoized */}
+    
       {consultants.map((consultant, index) => (
         <Text key={index} style={{ fontWeight: 'bold', fontSize: 14 }}>
           {consultant}
